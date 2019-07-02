@@ -1,0 +1,31 @@
+.login__container {
+  width: 100%;
+  max-width: 320px;
+  margin: 10vh auto 0 auto;
+  padding: 1.25em;
+  border: 1px solid #d5d5d5;
+  background-color: white;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.login__logo {
+  display: block;
+  margin: 0.8em auto 2em auto;
+}
+
+.login__avatar {
+  display: block;
+  margin: 0 auto;
+}
+
+.login__heading {
+  font-size: 1.15em;
+  font-weight: normal;
+  margin-bottom: 0.35em;
+}
+
+.login__label {
+  display: inline-block;
+  margin-bottom: 0.75em;
+}
