@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { handleLoginData } from '../actions/shared';
+
 import './Login.css';
 import logo from '../images/logo.svg';
 import blankAvatar from '../images/blank-avatar.svg';
 import Spinner from '../components/Spinner';
 
 class Login extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(handleLoginData());
+  }
 
   handleLogin = () => {
     this.props.history.push('/home');
@@ -23,23 +30,35 @@ class Login extends Component {
 
         <label htmlFor="userSelection" className="login__label text-light">Select a user below</label>
 
-        <Spinner />
+        {this.props.userCount === 0 ? (
+          <Spinner />
+        ) : (
+          <div>
 
+            <select id="userSelection">
+              <option value="user1">User 1</option>
+              <option value="user2">User 2</option>
+              <option value="user3">User 3</option>
+            </select>
 
-        <select id="userSelection">
-          <option value="user1">User 1</option>
-          <option value="user2">User 2</option>
-          <option value="user3">User 3</option>
-        </select>
+            <br />
 
-        <br />
+            <button onClick={this.handleLogin}>Login</button>
 
-        <button onClick={this.handleLogin}>Login</button>
+          </div>
+        )}
 
       </div>
     );
   }
 }
 
-export default withRouter(Login);
+function mapStateToProps({ users }) {
+  return {
+    userCount: Object.keys(users).length
+  };
+}
+
+
+export default withRouter(connect(mapStateToProps)(Login));
 

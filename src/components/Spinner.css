@@ -3,7 +3,7 @@
   height: 40px;
   background-color: #0b78d0;
 
-  margin: 2em auto;
+  margin: 1.75em auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
