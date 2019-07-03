@@ -36,9 +36,9 @@ class Login extends Component {
           <div>
 
             <select id="userSelection">
-              <option value="user1">User 1</option>
-              <option value="user2">User 2</option>
-              <option value="user3">User 3</option>
+              {Object.keys(this.props.users).map(key => (
+                <option key={key} value={key}>{ this.props.users[key].name }</option>
+              ))}
             </select>
 
             <br />
@@ -55,7 +55,8 @@ class Login extends Component {
 
 function mapStateToProps({ users }) {
   return {
-    userCount: Object.keys(users).length
+    userCount: Object.keys(users).length,
+    users: users
   };
 }
 
