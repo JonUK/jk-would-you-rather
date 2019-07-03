@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import './Login.css';
 import logo from '../images/logo.svg';
 import blankAvatar from '../images/blank-avatar.svg';
+import Spinner from '../components/Spinner';
 
 class Login extends Component {
 
@@ -21,6 +22,9 @@ class Login extends Component {
         <h1 className="login__heading">Login to your account</h1>
 
         <label htmlFor="userSelection" className="login__label text-light">Select a user below</label>
+
+        <Spinner />
+
 
         <select id="userSelection">
           <option value="user1">User 1</option>

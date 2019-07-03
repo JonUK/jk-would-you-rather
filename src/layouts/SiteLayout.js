@@ -7,7 +7,7 @@ import HeaderLinks from '../components/HeaderLinks';
  * required that a user is authenticated and the user details are in redux.
  * @constructor
  */
-function AuthenticatedLayout({ children }) {
+function SiteLayout({ children }) {
   return (
     <div>
 
@@ -25,4 +25,4 @@ function AuthenticatedLayout({ children }) {
   );
 }
 
-export default AuthenticatedLayout;
+export default SiteLayout;
