@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleLoginData } from '../actions/shared';
+import { setAuthenticatedUsername } from '../actions/authenticatedUser';
 
 import './Login.css';
 import logo from '../images/logo.svg';
@@ -26,8 +27,8 @@ class Login extends Component {
     this.setState({ selectedUsername: event.target.value });
   };
 
-  handleLogin = () => {
-    console.log('selectedUsername', this.state.selectedUsername);
+  handleLogin = async () => {
+    await this.props.dispatch(setAuthenticatedUsername(this.state.selectedUsername));
     this.props.history.push('/home');
   };
 
