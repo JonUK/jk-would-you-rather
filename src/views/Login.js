@@ -10,11 +10,24 @@ import Spinner from '../components/Spinner';
 
 class Login extends Component {
 
-  componentDidMount() {
-    this.props.dispatch(handleLoginData());
+  state = {
+    selectedUsername: ''
+  };
+
+  async componentDidMount() {
+    await this.props.dispatch(handleLoginData());
+
+    // Use the first user as the default selected username
+    const firstUsername = Object.keys(this.props.users)[0];
+    this.setState({ selectedUsername: firstUsername });
   }
 
+  handleUserSelectionChange = (event) => {
+    this.setState({ selectedUsername: event.target.value });
+  };
+
   handleLogin = () => {
+    console.log('selectedUsername', this.state.selectedUsername);
     this.props.history.push('/home');
   };
 
@@ -35,7 +48,9 @@ class Login extends Component {
         ) : (
           <div>
 
-            <select id="userSelection">
+            <select id="userSelection"
+                    value={this.state.selectedUsername}
+                    onChange={this.handleUserSelectionChange}>
               {Object.keys(this.props.users).map(key => (
                 <option key={key} value={key}>{ this.props.users[key].name }</option>
               ))}
@@ -54,8 +69,11 @@ class Login extends Component {
 }
 
 function mapStateToProps({ users }) {
+
+  const usersObjectKeys = Object.keys(users);
+
   return {
-    userCount: Object.keys(users).length,
+    userCount: usersObjectKeys.length,
     users: users
   };
 }
