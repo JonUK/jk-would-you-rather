@@ -9,8 +9,15 @@
 }
 
 .header-avatar__image {
+  display: none;
   margin-right: 0.55em;
   vertical-align: middle;
+}
+
+@media screen and (min-width: 50em) {
+  .header-avatar__image {
+    display: inline;
+  }
 }
 
 .header-avatar__name {

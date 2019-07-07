@@ -3,8 +3,18 @@
  */
 .header-links {
   flex-grow: 1; /* The links take all the available space */
-  /*margin-left: 3.5em; MAKE RESPONSIVE */
-  margin-left: 3.5em;
+}
+
+@media screen and (min-width: 48em) {
+  .header-links {
+    margin-left: 1em; /* Spacing between the logo and the header links */
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .header-links {
+    margin-left: 3.5em; /* Spacing between the logo and the header links */
+  }
 }
 
 .header-links__list {

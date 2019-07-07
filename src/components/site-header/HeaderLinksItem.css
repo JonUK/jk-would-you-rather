@@ -4,12 +4,17 @@
 
 .header-links-item__link {
   display: block;
-  /*padding: 1.15em 1.4em 1em 1.4em; MAKE RESPONSIVE */
-  padding: 1.2em 1.4em 1.05em 1.4em;
+  padding: 1.2em 0.75em 1.05em 0.75em;
   border-bottom: 2px solid transparent; /* Allocate the space for a border */
   color: #707070;
   text-align: center;
   text-decoration: none;
+}
+
+@media screen and (min-width: 55em) {
+  .header-links-item__link {
+    padding: 1.2em 1.4em 1.05em 1.4em;
+  }
 }
 
 .header-links-item__link:hover {

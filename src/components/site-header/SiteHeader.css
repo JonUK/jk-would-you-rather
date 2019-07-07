@@ -8,6 +8,12 @@
 }
 
 .site-header__logo {
-  display: block; /* Prevent descender from pushing image up */
+  display: none;
   margin-top: -0.25em; /* Compensate for large question markup */
+}
+
+@media screen and (min-width: 48em) {
+  .site-header__logo {
+    display: block; /* Prevent descender from pushing image up */
+  }
 }
