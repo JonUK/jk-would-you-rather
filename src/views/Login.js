@@ -66,7 +66,7 @@ class Login extends Component {
 
             <br />
 
-            <button onClick={this.handleLogin}>
+            <button onClick={this.handleLogin} className="button--primary">
 
               {this.state.isAuthenticating ? (
                 <Spinner isInline={true}/>
@@ -92,6 +92,5 @@ function mapStateToProps({ users }) {
     users: users
   };
 }
-
 
 export default withRouter(connect(mapStateToProps)(Login));

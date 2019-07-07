@@ -12,10 +12,6 @@ function HeaderLinks() {
         <HeaderLinksItem path={'/add-question'} text="Add Question"/>
         <HeaderLinksItem path={'/leaderboard'} text="Leaderboard"/>
 
-        {/*<li className="header-links__item">*/}
-          {/*<NavLink to={'/'} className="header-links__link">Login</NavLink>*/}
-        {/*</li>*/}
-
       </ul>
     </div>
   );

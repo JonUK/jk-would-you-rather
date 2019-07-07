@@ -2,6 +2,7 @@
  The HeaderLinks component is a direct child of SiteHeader which is a flexbox parent
  */
 .header-links {
+  flex-grow: 1; /* The links take all the available space */
   /*margin-left: 3.5em; MAKE RESPONSIVE */
   margin-left: 3.5em;
 }

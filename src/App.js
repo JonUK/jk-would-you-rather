@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
+import PrivateRoute from './PrivateRoute';
 import Login from './views/Login';
 
-import SiteLayout from './layouts/SiteLayout';
 import Home from './views/Home';
 import AddQuestion from './views/AddQuestion';
 import LeaderBoard from './views/Leaderboard';
@@ -21,9 +21,9 @@ class App extends Component {
 
           <Route exact path='/' component={Login} />
 
-          <Route exact path="/home" render={() => <SiteLayout><Home /></SiteLayout>}/>
-          <Route exact path="/add-question" render={() => <SiteLayout><AddQuestion /></SiteLayout>}/>
-          <Route exact path="/leaderboard" render={() => <SiteLayout><LeaderBoard /></SiteLayout>}/>
+          <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/add-question" component={AddQuestion}/>
+          <PrivateRoute exact path="/leaderboard" component={LeaderBoard}/>
 
         </div>
 

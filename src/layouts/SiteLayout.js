@@ -1,5 +1,5 @@
 import React from 'react';
-import SiteHeader from '../components/SiteHeader';
+import SiteHeader from '../components/site-header/SiteHeader';
 
 /**
  * Layout used on all pages other than the login screen. Contains site wide UI

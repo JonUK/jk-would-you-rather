@@ -8,6 +8,6 @@
 }
 
 .site-header__logo {
-  /* Compensate for large question markup */
-  margin-top: -0.25em;
+  display: block; /* Prevent descender from pushing image up */
+  margin-top: -0.25em; /* Compensate for large question markup */
 }
