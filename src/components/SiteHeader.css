@@ -1,0 +1,13 @@
+.site-header {
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  padding: 0 1.5em;
+  min-height: 3em; /* Real height set by header links */
+  background-color: white;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.site-header__logo {
+  /* Compensate for large question markup */
+  margin-top: -0.25em;
+}

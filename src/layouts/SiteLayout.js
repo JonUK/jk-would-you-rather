@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderLinks from '../components/HeaderLinks';
+import SiteHeader from '../components/SiteHeader';
 
 /**
  * Layout used on all pages other than the login screen. Contains site wide UI
@@ -11,14 +11,11 @@ function SiteLayout({ children }) {
   return (
     <div>
 
-      <header>
+      <SiteHeader />
 
-        <h1>Site Header</h1>
-        <HeaderLinks />
-
-      </header>
-
-      {children}
+      <main>
+        {children}
+      </main>
 
       <footer>Site Footer</footer>
     </div>

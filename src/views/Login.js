@@ -28,6 +28,10 @@ class Login extends Component {
   };
 
   handleLogin = async () => {
+    if (this.state.isAuthenticating) {
+      return; // Ignore any additional login button clicks
+    }
+
     this.setState({ isAuthenticating: true });
 
     // Set the username in state, retrieve the questions and also add to state

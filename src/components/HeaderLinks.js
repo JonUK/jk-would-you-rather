@@ -1,14 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import './HeaderLinks.css';
+
+import HeaderLinksItem from './HeaderLinksItem';
 
 function HeaderLinks() {
   return (
-    <div>
-      <ul>
-        <li><Link to={'/home'}>Home</Link></li>
-        <li><Link to={'/add-question'}>Add Question</Link></li>
-        <li><Link to={'/leaderboard'}>Leaderboard</Link></li>
-        <li><Link to={'/'}>Login</Link></li>
+    <div className="header-links">
+      <ul className="header-links__list">
+
+        <HeaderLinksItem path={'/home'} text="Home"/>
+        <HeaderLinksItem path={'/add-question'} text="Add Question"/>
+        <HeaderLinksItem path={'/leaderboard'} text="Leaderboard"/>
+
+        {/*<li className="header-links__item">*/}
+          {/*<NavLink to={'/'} className="header-links__link">Login</NavLink>*/}
+        {/*</li>*/}
+
       </ul>
     </div>
   );

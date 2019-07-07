@@ -12,6 +12,19 @@ body {
   box-sizing: inherit;
 }
 
+main {
+  margin: 0 1.5em;
+}
+
+@media screen and (min-width: 77em) {
+  main {
+    margin: 0 auto;
+
+    /* Allow 2em for scrollbar. 1232px rough width with standard font size. */
+    max-width: 75em;
+  }
+}
+
 select {
   width: 100%;
   margin: 0.5em 0;
