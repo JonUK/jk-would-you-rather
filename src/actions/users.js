@@ -1,6 +1,9 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 
-// Action creator function
+/**
+ * @param {Object} users *
+ * @returns {{type: string, users: *}}
+ */
 export function receiveUsers(users) {
   return {
     type: RECEIVE_USERS,

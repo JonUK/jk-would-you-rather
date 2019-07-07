@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { handleLoginData } from '../actions/shared';
-import { setAuthenticatedUsername } from '../actions/authenticatedUser';
+import { handlePreLoginData, handlePostLoginData } from '../actions/shared';
 
 import './Login.css';
 import logo from '../images/logo.svg';
@@ -12,11 +11,12 @@ import Spinner from '../components/Spinner';
 class Login extends Component {
 
   state = {
-    selectedUsername: ''
+    selectedUsername: '',
+    isAuthenticating: false
   };
 
   async componentDidMount() {
-    await this.props.dispatch(handleLoginData());
+    await this.props.dispatch(handlePreLoginData());
 
     // Use the first user as the default selected username
     const firstUsername = Object.keys(this.props.users)[0];
@@ -28,7 +28,10 @@ class Login extends Component {
   };
 
   handleLogin = async () => {
-    await this.props.dispatch(setAuthenticatedUsername(this.state.selectedUsername));
+    this.setState({ isAuthenticating: true });
+
+    // Set the username in state, retrieve the questions and also add to state
+    await this.props.dispatch(handlePostLoginData(this.state.selectedUsername));
     this.props.history.push('/home');
   };
 
@@ -59,7 +62,14 @@ class Login extends Component {
 
             <br />
 
-            <button onClick={this.handleLogin}>Login</button>
+            <button onClick={this.handleLogin}>
+
+              {this.state.isAuthenticating ? (
+                <Spinner isInline={true}/>
+              ) : (
+                <span>Login</span>
+              )}
+            </button>
 
           </div>
         )}
@@ -81,4 +91,3 @@ function mapStateToProps({ users }) {
 
 
 export default withRouter(connect(mapStateToProps)(Login));
-

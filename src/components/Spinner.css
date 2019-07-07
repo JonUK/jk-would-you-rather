@@ -1,4 +1,5 @@
 .spinner {
+  display: block;
   width: 40px;
   height: 40px;
   background-color: #0b78d0;
@@ -7,6 +8,18 @@
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
+
+.spinner--inline {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  /* Only need white inline for now. Mature later if required */
+  background-color: white;
+  margin: auto;
+  vertical-align: middle;
+}
+
 
 @-webkit-keyframes sk-rotateplane {
   0% {
