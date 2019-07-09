@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './HeaderAvatar.css';
 
+import AvatarImage from '../AvatarImage';
+
 class HeaderAvatar extends Component {
 
   state = {
@@ -15,20 +17,12 @@ class HeaderAvatar extends Component {
 
   render() {
 
-    const srcSet = this.props.user.avatarURL + '.png, ' + this.props.user.avatarURL + '@2x.png 2x';
-
     return (
       <div className="header-avatar">
 
         <button className="header-avatar__button" onClick={this.toggleShowMenu}>
 
-          <img
-            src={this.props.user.avatarURL + '.png'}
-            srcSet={srcSet}
-            width="46"
-            height="46"
-            className="header-avatar__image"
-            alt="" />
+          <AvatarImage avatarURL={this.props.user.avatarURL} className="header-avatar__image" />
 
           <span className="header-avatar__name">
             { this.props.user.name }
@@ -48,9 +42,6 @@ class HeaderAvatar extends Component {
 }
 
 function mapStateToProps({ authenticatedUser, users }) {
-
-  // debugger;
-
   const user = users[authenticatedUser];
 
   return {

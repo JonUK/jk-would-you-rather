@@ -1,3 +1,6 @@
+
+/* Standard browser element styles */
+
 body {
   box-sizing: border-box;
   font-size: 100%;
@@ -14,14 +17,16 @@ body {
 
 main {
   margin: 0 1.5em;
+  font-size: 1.1em;
+
 }
 
-@media screen and (min-width: 77em) {
+@media screen and (min-width: 32em) {
   main {
     margin: 0 auto;
 
-    /* Allow 2em for scrollbar. 1232px rough width with standard font size. */
-    max-width: 75em;
+    /* Allow 2em for scrollbar */
+    max-width: 30em;
   }
 }
 
@@ -33,6 +38,9 @@ select {
   border-radius: 3px;
 }
 
+
+/* Button styles */
+
 .button--primary {
   width: 100%;
   margin: 0.5em 0;
@@ -43,6 +51,9 @@ select {
   color: white;
   font-size: 1.1em;
 }
+
+
+/* Typography styles */
 
 .text-light {
   color: #707070;
