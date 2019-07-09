@@ -7,15 +7,11 @@ import QuestionSummary from '../components/QuestionSummary';
 class Questions extends Component {
 
   state = {
-    showAnsweredQuestions: false // Toggle to flip between showing unanswered and answered questions
+    showAnswered: false // Toggle to flip between showing unanswered and answered questions
   };
 
-  showUnanswered = () => {
-    this.setState({ showAnsweredQuestions: false });
-  };
-
-  showAnswered = () => {
-    this.setState({ showAnsweredQuestions: true });
+  showAnswered = (value) => {
+    this.setState({ showAnswered: value });
   };
 
   renderQuestions = (questions, users) => {
@@ -30,23 +26,23 @@ class Questions extends Component {
 
         <h1>Questions</h1>
 
-        <div class="questions__buttons-container">
+        <div className="questions__buttons-container">
 
-          <button onClick={this.showUnanswered}
-                  className={'questions__button' + (this.state.showAnsweredQuestions ? '' : ' questions__button--active')}>
+          <button onClick={() => this.showAnswered(false)}
+                  className={'questions__button' + (this.state.showAnswered ? '' : ' questions__button--active')}>
             Unanswered ({ this.props.unansweredQuestions.length })
           </button>
 
-          <button onClick={this.showAnswered}
-                  className={'questions__button' + (this.state.showAnsweredQuestions ? ' questions__button--active' : '')}>
+          <button onClick={() => this.showAnswered(true)}
+                  className={'questions__button' + (this.state.showAnswered ? ' questions__button--active' : '')}>
             Answered ({ this.props.answeredQuestions.length })
           </button>
 
         </div>
 
-        {!this.state.showAnsweredQuestions && this.renderQuestions(this.props.unansweredQuestions, this.props.users)}
+        {!this.state.showAnswered && this.renderQuestions(this.props.unansweredQuestions, this.props.users)}
 
-        {this.state.showAnsweredQuestions && this.renderQuestions(this.props.answeredQuestions, this.props.users)}
+        {this.state.showAnswered && this.renderQuestions(this.props.answeredQuestions, this.props.users)}
 
       </div>
     );

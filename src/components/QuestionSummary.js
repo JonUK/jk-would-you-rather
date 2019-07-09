@@ -11,7 +11,7 @@ function QuestionSummary(props) {
       <header className="question-summary__header">
 
         <div className="question-summary__heading">
-          { props.user.name } asked...
+          { props.user.name } asked<span>&hellip; </span>
           <b>would you rather?</b>
         </div>
 
