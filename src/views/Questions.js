@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Questions.css';
 
-import QuestionSummary from '../components/QuestionSummary';
+import QuestionCard from '../components/QuestionCard';
 
 class Questions extends Component {
 
@@ -16,7 +16,7 @@ class Questions extends Component {
 
   renderQuestions = (questions, users) => {
     return questions.map(question => {
-      return (<QuestionSummary key={question.id} question={question} user={users[question.author]} />);
+      return (<QuestionCard key={question.id} question={question} user={users[question.author]} />);
     });
   };
 

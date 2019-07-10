@@ -11,7 +11,7 @@ function SiteHeader() {
   return (
     <header className="site-header">
 
-      <Link to={'/home'}>
+      <Link to={'/questions'}>
         <img src={logo} width="240" height="22" alt="Would You Rather?" className="site-header__logo" />
       </Link>
 
