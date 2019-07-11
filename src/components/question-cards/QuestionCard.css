@@ -20,12 +20,17 @@
 }
 
 .question-card__answer-container {
+  margin-left: 1.25em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
+.question-card__radio {
+  margin-right: 0.6em;
+  vertical-align: middle;
+}
+
 .question-card__answer-letter {
-  margin-left: 1.25em;
   margin-right: 0.75em;
   font-size: 1.25em;
   font-weight: 500;

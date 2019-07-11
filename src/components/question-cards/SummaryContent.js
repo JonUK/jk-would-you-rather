@@ -1,26 +1,15 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './QuestionCard.css';
+/**
+ * Both answers are displayed but the user can't answer the question
+ * @constructor
+ */
+function SummaryContent(props) {
 
-import AvatarImage from "./AvatarImage";
-
-function QuestionCard(props) {
   return (
-    <article className="question-card">
-
-      <header className="question-card__header">
-
-        <div className="question-card__heading">
-          { props.user.name } asked<span>&hellip; </span>
-          <b>would you rather?</b>
-        </div>
-
-        <AvatarImage avatarURL={props.user.avatarURL} />
-
-      </header>
-
+    <div>
       <div className="question-card__answer-container">
         <strong className="question-card__answer-letter">A</strong>
         <span className="question-card__question">
@@ -37,15 +26,13 @@ function QuestionCard(props) {
       <footer className="question-card__footer">
         <Link to={'/questions/' + props.question.id}>View Poll</Link>
       </footer>
-
-    </article>
-  );
+    </div>
+  )
 
 }
 
-QuestionCard.propTypes = {
-  question: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+SummaryContent.propTypes = {
+  question: PropTypes.object.isRequired
 };
 
-export default QuestionCard;
+export default SummaryContent;
