@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { handleAnswerQuestion } from '../../actions/questions';
+import Spinner from '../Spinner';
 
 /**
  * Both answers are displayed with radio inputs ready for the question to be answered
@@ -8,27 +12,29 @@ import PropTypes from 'prop-types';
 class EditableContent extends Component {
 
   state = {
-    selectedAnswer: 'optionOne' // Select the first option by default
+    selectedAnswer: 'optionOne', // Select the first option by default
+    isSaving: false
   };
 
   changeAnswer = (event) => {
     this.setState({ selectedAnswer: event.target.value });
   };
 
-  handleSendAnswer = () => {
+  sendAnswer = async () => {
 
-    // Dispatch an action to update the question to include the answer and update the current user
-    // to log that they answered this question.
+    this.setState({ isSaving: true });
 
-    console.log('sendAnswer');
+    await this.props.dispatch(handleAnswerQuestion(
+      this.props.question.id,
+      this.state.selectedAnswer));
+
+    this.props.history.push('/');
   };
 
   render() {
 
     return (
       <div>
-
-        selectedAnswer: {this.state.selectedAnswer}
 
         <div className="question-card__answer-container">
 
@@ -67,7 +73,15 @@ class EditableContent extends Component {
         </div>
 
         <footer className="question-card__footer">
-          <button onClick={this.sendAnswer} className="button--primary">Submit Answer</button>
+          <button onClick={this.sendAnswer} className="button--primary">
+
+            {this.state.isSaving ? (
+              <Spinner isInline={true}/>
+            ) : (
+              <span>Submit Answer</span>
+            )}
+
+          </button>
         </footer>
       </div>
     );
@@ -78,4 +92,4 @@ EditableContent.propTypes = {
   question: PropTypes.object.isRequired
 };
 
-export default EditableContent;
+export default withRouter(connect()(EditableContent));

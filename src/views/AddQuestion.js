@@ -1,7 +1,9 @@
 import React from 'react';
 
 function AddQuestion () {
-  return (<h1>ADD Question</h1>);
+  return (
+    <h1>Add Question</h1>
+  );
 }
 
 export default AddQuestion;

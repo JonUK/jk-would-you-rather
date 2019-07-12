@@ -36,7 +36,7 @@ class Login extends Component {
 
     // Set the username in state, retrieve the questions and also add to state
     await this.props.dispatch(handlePostLoginData(this.state.selectedUsername));
-    this.props.history.push('/questions');
+    this.props.history.push('/');
   };
 
   render() {

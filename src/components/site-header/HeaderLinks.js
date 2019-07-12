@@ -8,8 +8,8 @@ function HeaderLinks() {
     <div className="header-links">
       <ul className="header-links__list">
 
-        <HeaderLinksItem path={'/questions'} text="Questions"/>
-        <HeaderLinksItem path={'/add-question'} text="Add Question"/>
+        <HeaderLinksItem path={'/'} text="Questions"/>
+        <HeaderLinksItem path={'/add'} text="Add Question"/>
         <HeaderLinksItem path={'/leaderboard'} text="Leaderboard"/>
 
       </ul>

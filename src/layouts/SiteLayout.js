@@ -17,7 +17,6 @@ function SiteLayout({ children }) {
         {children}
       </main>
 
-      <footer>Site Footer</footer>
     </div>
   );
 }

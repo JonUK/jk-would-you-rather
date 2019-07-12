@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 import './HeaderAvatar.css';
+import { clearAuthenticatedUsername } from '../../actions/authenticatedUser';
+
 
 import AvatarImage from '../AvatarImage';
 
@@ -13,6 +16,12 @@ class HeaderAvatar extends Component {
 
   toggleShowMenu = () => {
     this.setState({ showMenu: !this.state.showMenu });
+  };
+
+  logout = async () => {
+    await this.props.dispatch(clearAuthenticatedUsername());
+    this.props.history.push('/');
+
   };
 
   render() {
@@ -32,7 +41,7 @@ class HeaderAvatar extends Component {
 
         {this.state.showMenu && (
           <div className="header-avatar__menu">
-            <Link to={'/'}>Logout</Link>
+            <button onClick={this.logout} className="button--primary">Logout</button>
           </div>
         )}
 
@@ -42,11 +51,9 @@ class HeaderAvatar extends Component {
 }
 
 function mapStateToProps({ authenticatedUser, users }) {
-  const user = users[authenticatedUser];
-
   return {
-    user
+    user: users[authenticatedUser]
   };
 }
 
-export default connect(mapStateToProps)(HeaderAvatar);
+export default withRouter(connect(mapStateToProps)(HeaderAvatar));
