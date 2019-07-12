@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import PrivateRoute from './PrivateRoute';
 import Login from './views/Login';
+import NotFound from './views/NotFound';
 
 import Questions from './views/Questions';
 import AddQuestion from './views/AddQuestion';
@@ -11,7 +12,8 @@ import Question from './views/Question';
 
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 
 class App extends Component {
@@ -19,7 +21,7 @@ class App extends Component {
     return (
       <Router>
 
-        <div>
+        <Switch>
 
           <Route exact path='/login' component={Login} />
 
@@ -28,7 +30,9 @@ class App extends Component {
           <PrivateRoute exact path="/leaderboard" component={LeaderBoard} />
           <PrivateRoute exact path="/questions/:questionId" component={Question} />
 
-        </div>
+          <Route component={NotFound} />
+
+        </Switch>
 
       </Router>
     );
