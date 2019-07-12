@@ -1,7 +1,11 @@
-import { _saveQuestionAnswer } from '../data/_data';
+import {
+  _saveQuestionAnswer,
+  _saveQuestion
+} from '../data/_data';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 /**
  * @param {Object} questions
@@ -44,5 +48,34 @@ export function handleAnswerQuestion(questionId, answer) {
 
     dispatch(answerQuestion(answerObject));
     return _saveQuestionAnswer(answerObject);
+  }
+}
+
+/**
+ * @param {Object} questionObject
+ * @return {{answerObject: *, type: string}}
+ */
+export function addQuestion(responseObject) {
+  return {
+    type: ADD_QUESTION,
+    responseObject
+  }
+}
+
+export function handleAddQuestion(optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+
+    const { authenticatedUser } = getState();
+
+    const questionObject = {
+      author: authenticatedUser,
+      optionOneText: optionOneText,
+      optionTwoText: optionTwoText
+    };
+
+    return _saveQuestion(questionObject)
+      .then(responseObject => {
+        dispatch(addQuestion(responseObject));
+      });
   }
 }

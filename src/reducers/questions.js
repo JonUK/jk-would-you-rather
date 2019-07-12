@@ -1,6 +1,7 @@
 import {
   RECEIVE_QUESTIONS,
-  ANSWER_QUESTION
+  ANSWER_QUESTION,
+  ADD_QUESTION
 } from '../actions/questions';
 
 export default function users(state = {}, action) {
@@ -11,7 +12,6 @@ export default function users(state = {}, action) {
         ...action.questions
       };
     case ANSWER_QUESTION:
-
       const { authedUser, qid, answer } = action.answerObject;
 
       return {
@@ -22,6 +22,19 @@ export default function users(state = {}, action) {
             ...state[qid][answer],
             votes: state[qid][answer].votes.concat(authedUser)
           }
+        }
+      };
+    case ADD_QUESTION:
+      const { id, author, optionOne, optionTwo, timestamp } = action.responseObject;
+
+      return {
+        ...state,
+        [id]: {
+          id: id,
+          author: author,
+          timestamp: timestamp,
+          optionOne: optionOne,
+          optionTwo: optionTwo
         }
       };
 
