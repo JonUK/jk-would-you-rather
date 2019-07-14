@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handlePreLoginData, handlePostLoginData } from '../actions/shared';
+import SessionService from '../services/sessionService';
 
 import './Login.css';
 import logo from '../images/logo.svg';
@@ -12,15 +13,26 @@ class Login extends Component {
 
   state = {
     selectedUsername: '',
-    isAuthenticating: false
+    isAuthenticating: false,
+    isAutoLoggingOn: false
   };
 
   async componentDidMount() {
-    await this.props.dispatch(handlePreLoginData());
 
-    // Use the first user as the default selected username
-    const firstUsername = Object.keys(this.props.users)[0];
-    this.setState({ selectedUsername: firstUsername });
+    const sessionUsername = SessionService.getAuthenticatedUsername();
+
+    if (sessionUsername) {
+      this.setState({ isAutoLoggingOn: true });
+      await this.props.dispatch(handlePreLoginData());
+      this.postLoginSteps(sessionUsername);
+    } else {
+
+      await this.props.dispatch(handlePreLoginData());
+
+      // Use the first user as the default selected username
+      const firstUsername = Object.keys(this.props.users)[0];
+      this.setState({ selectedUsername: firstUsername });
+    }
   }
 
   handleUserSelectionChange = (event) => {
@@ -34,9 +46,21 @@ class Login extends Component {
 
     this.setState({ isAuthenticating: true });
 
+    this.postLoginSteps(this.state.selectedUsername);
+  };
+
+  postLoginSteps = async (username) => {
+
     // Set the username in state, retrieve the questions and also add to state
-    await this.props.dispatch(handlePostLoginData(this.state.selectedUsername));
-    this.props.history.push('/');
+    await this.props.dispatch(handlePostLoginData(username));
+
+    // Set the username in session storage so if a user reloads the page or navigates
+    // to another URL, we don't force them to login again.
+    SessionService.setAuthenticatedUsername(username);
+
+    // Attempt to redirect the user back to the originally requested page
+    const redirectUrl = this.props.location.state.from || '/';
+    this.props.history.push(redirectUrl);
   };
 
   render() {
@@ -45,39 +69,55 @@ class Login extends Component {
 
         <img src={logo} width="240" height="22" alt="Would You Rather?" className="login__logo" />
 
-        <img src={blankAvatar} width="78" height="78" alt="" className="login__avatar" />
 
-        <h1 className="login__heading">Login to your account</h1>
+        {this.state.isAutoLoggingOn &&
+          <div>
+            <h1 className="login__heading">Retrieving data... Please wait.</h1>
+            <Spinner />
+          </div>
+        }
 
-        <label htmlFor="userSelection" className="login__label text-light">Select a user below</label>
 
-        {this.props.userCount === 0 ? (
-          <Spinner />
-        ) : (
+        {!this.state.isAutoLoggingOn &&
           <div>
 
-            <select id="userSelection"
-                    autoFocus
-                    value={this.state.selectedUsername}
-                    onChange={this.handleUserSelectionChange}>
-              {Object.keys(this.props.users).map(key => (
-                <option key={key} value={key}>{ this.props.users[key].name }</option>
-              ))}
-            </select>
+            <img src={blankAvatar} width="78" height="78" alt="" className="login__avatar" />
 
-            <br />
+            <h1 className="login__heading">Login to your account</h1>
 
-            <button onClick={this.handleLogin} className="button--primary">
+            <label htmlFor="userSelection" className="login__label text-light">Select a user below</label>
 
-              {this.state.isAuthenticating ? (
-                <Spinner isInline={true}/>
-              ) : (
-                <span>Login</span>
-              )}
-            </button>
+            {this.props.userCount === 0 ? (
+              <Spinner />
+            ) : (
+              <div>
+
+                <select id="userSelection"
+                        autoFocus
+                        value={this.state.selectedUsername}
+                        onChange={this.handleUserSelectionChange}>
+                  {Object.keys(this.props.users).map(key => (
+                    <option key={key} value={key}>{ this.props.users[key].name }</option>
+                  ))}
+                </select>
+
+                <br />
+
+                <button onClick={this.handleLogin} className="button--primary">
+
+                  {this.state.isAuthenticating ? (
+                    <Spinner isInline={true}/>
+                  ) : (
+                    <span>Login</span>
+                  )}
+                </button>
+
+              </div>
+            )}
 
           </div>
-        )}
+        }
+
 
       </div>
     );

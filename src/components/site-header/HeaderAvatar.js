@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import SessionService from '../../services/sessionService';
 
 import './HeaderAvatar.css';
 import { clearAuthenticatedUsername } from '../../actions/authenticatedUser';
@@ -19,9 +20,9 @@ class HeaderAvatar extends Component {
   };
 
   logout = async () => {
+    SessionService.clearAuthenticatedUsername();
     await this.props.dispatch(clearAuthenticatedUsername());
     this.props.history.push('/');
-
   };
 
   render() {
