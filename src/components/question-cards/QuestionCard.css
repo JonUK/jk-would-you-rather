@@ -1,20 +1,3 @@
-.question-card__header {
-  display: flex;
-  align-items: center; /* Vertical alignment */
-}
-
-/*
- The header and avatar image are in the header flexbox parent.
- Have the heading take all the available width.
- */
-.question-card__heading {
-  flex-grow: 1;
-}
-
-.question-card__avatar {
-  margin-right: -0.35em;
-}
-
 .question-card__answer-container {
   margin-left: 1.25em;
   margin-top: 1em;

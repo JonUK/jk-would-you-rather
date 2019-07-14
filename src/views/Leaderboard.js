@@ -1,17 +1,39 @@
 import React from 'react';
 import { connect} from 'react-redux';
+import './Leaderboard.css';
+import AvatarImage from '../components/AvatarImage';
 
 function Leaderboard (props) {
 
   return (
     <div>
+
       <h1>Leaderboard</h1>
 
       {props.usersStats.map(userStats =>
-        <div key={userStats.user.id}>
-          { userStats.user.name } has { userStats.points } points.
-          They asked { userStats.askedQuestionsCount } questions and answered { userStats.answeredQuestionCount } questions
-        </div>
+        <article key={userStats.user.id} className="panel">
+
+          <header className="panel__header">
+
+            <div className="panel__heading">
+              { userStats.user.name } has
+              <span className="leaderboard__highlight"> { userStats.points } </span>
+              points.
+            </div>
+
+            <AvatarImage avatarURL={userStats.user.avatarURL} className="panel__avatar" />
+
+          </header>
+
+          <div className="leaderboard__summary">
+            They have asked
+            <span className="leaderboard__highlight"> { userStats.askedQuestionsCount } </span>
+            questions and answered
+            <span className="leaderboard__highlight"> { userStats.answeredQuestionCount } </span>
+            questions.
+          </div>
+
+        </article>
       )}
 
     </div>

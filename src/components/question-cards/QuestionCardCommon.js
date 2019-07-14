@@ -14,14 +14,14 @@ function QuestionCardCommon(props) {
   return (
     <article className="panel">
 
-      <header className="question-card__header">
+      <header className="panel__header">
 
-        <div className="question-card__heading">
+        <div className="panel__heading">
           { props.user.name } asked<span>&hellip; </span>
           <b>would you rather?</b>
         </div>
 
-        <AvatarImage avatarURL={props.user.avatarURL} className="question-card__avatar" />
+        <AvatarImage avatarURL={props.user.avatarURL} className="panel__avatar" />
 
       </header>
 

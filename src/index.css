@@ -75,11 +75,27 @@ input[type=text] {
   color: #a94442
 }
 
-
 /* Panel styles */
 .panel {
   margin-bottom: 20px;
   padding: 0.6em 1.2em 1.2em 1.2em;
   border: 1px solid #d5d5d5;
   background-color: white;
+}
+
+.panel__header {
+  display: flex;
+  align-items: center; /* Vertical alignment */
+}
+
+/*
+ The header and avatar image are in the header flexbox parent.
+ Have the heading take all the available width.
+ */
+.panel__heading {
+  flex-grow: 1;
+}
+
+.panel__avatar {
+  margin-right: -0.35em;
 }
