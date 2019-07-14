@@ -75,7 +75,7 @@ class Login extends Component {
 
         {this.state.isAutoLoggingOn &&
           <div>
-            <h1 className="login__heading">Retrieving data... Please wait.</h1>
+            <h1 className="login__heading">Retrieving data&hellip; Please wait.</h1>
             <Spinner />
           </div>
         }

@@ -44,6 +44,8 @@ class AddQuestion extends Component {
 
           <header className="add-question__heading">
             Complete the form below to add a new question
+
+            <h2>Would you rather&hellip;</h2>
           </header>
 
           <label>
