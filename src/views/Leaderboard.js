@@ -34,7 +34,7 @@ function mapStateToProps({ users }) {
       askedQuestionsCount: askedQuestionsCount,
       answeredQuestionCount: answeredQuestionCount,
       points: askedQuestionsCount + answeredQuestionCount
-    }
+    };
 
   }).sort((a, b) => b.points - a.points);
 

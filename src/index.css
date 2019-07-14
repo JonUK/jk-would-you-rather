@@ -39,7 +39,7 @@ select {
 }
 
 
-/* Button styles */
+/* Form styles */
 
 .button--primary {
   width: 100%;
@@ -52,9 +52,34 @@ select {
   font-size: 1.1em;
 }
 
+label {
+  display: block;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 0.5em 0.6em;
+  margin: 0.5em 0;
+}
+
 
 /* Typography styles */
 
 .text-light {
   color: #707070;
+}
+
+.text-error {
+  color: #a94442
+}
+
+
+/* Panel styles */
+.panel {
+  margin-bottom: 20px;
+  padding: 0.6em 1.2em 1.2em 1.2em;
+  border: 1px solid #d5d5d5;
+  background-color: white;
 }

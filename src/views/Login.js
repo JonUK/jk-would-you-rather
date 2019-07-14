@@ -57,6 +57,7 @@ class Login extends Component {
           <div>
 
             <select id="userSelection"
+                    autoFocus
                     value={this.state.selectedUsername}
                     onChange={this.handleUserSelectionChange}>
               {Object.keys(this.props.users).map(key => (

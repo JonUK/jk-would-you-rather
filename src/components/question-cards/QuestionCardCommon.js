@@ -12,7 +12,7 @@ import AvatarImage from "./../AvatarImage";
  */
 function QuestionCardCommon(props) {
   return (
-    <article className="question-card">
+    <article className="panel">
 
       <header className="question-card__header">
 
@@ -21,7 +21,7 @@ function QuestionCardCommon(props) {
           <b>would you rather?</b>
         </div>
 
-        <AvatarImage avatarURL={props.user.avatarURL} />
+        <AvatarImage avatarURL={props.user.avatarURL} className="question-card__avatar" />
 
       </header>
 

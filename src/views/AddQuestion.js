@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleAddQuestion } from '../actions/questions';
 import Spinner from '../components/Spinner';
+import './AddQuestion.css';
 
 class AddQuestion extends Component {
 
@@ -36,34 +37,40 @@ class AddQuestion extends Component {
   render() {
     return (
       <div>
+
         <h1>Add Question</h1>
 
-        <label>
-          Answer one<br />
-          <input type="text" value={this.state.optionOneText} onChange={this.handleOptionOneChange} />
-        </label>
+        <article className="panel">
 
-        <br />
-        <br />
+          <header className="add-question__heading">
+            Complete the form below to add a new question
+          </header>
 
-        <label>
-          Answer one<br />
-          <input type="text" value={this.state.optionTwoText} onChange={this.handleOptionTwoChange} />
-        </label>
+          <label>
+            Option one<br />
+            <input type="text" value={this.state.optionOneText} onChange={this.handleOptionOneChange} autoFocus />
+          </label>
 
-        {this.state.showInputError &&
-          <div>Please enter both answers before continuing</div>
-        }
+          <label>
+            Option two<br />
+            <input type="text" value={this.state.optionTwoText} onChange={this.handleOptionTwoChange} />
+          </label>
 
-        <button onClick={this.addQuestion} className="button--primary">
+          {this.state.showInputError &&
+            <div role="alert" className="text-error">Please enter answers for both options before continuing</div>
+          }
 
-          {this.state.isSaving ? (
-            <Spinner isInline={true} />
-          ) : (
-            <span>Add Question</span>
-          )}
+          <button onClick={this.addQuestion} className="button--primary">
 
-        </button>
+            {this.state.isSaving ? (
+              <Spinner isInline={true} />
+            ) : (
+              <span>Add Question</span>
+            )}
+
+          </button>
+
+        </article>
 
       </div>
     );
