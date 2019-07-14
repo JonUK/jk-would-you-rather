@@ -59,7 +59,10 @@ class Login extends Component {
     SessionService.setAuthenticatedUsername(username);
 
     // Attempt to redirect the user back to the originally requested page
-    const redirectUrl = this.props.location.state.from || '/';
+    const redirectUrl = this.props.location.state
+      ? this.props.location.state.from
+      : '/';
+
     this.props.history.push(redirectUrl);
   };
 

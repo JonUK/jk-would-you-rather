@@ -22,7 +22,7 @@ class HeaderAvatar extends Component {
   logout = async () => {
     SessionService.clearAuthenticatedUsername();
     await this.props.dispatch(clearAuthenticatedUsername());
-    this.props.history.push('/');
+    this.props.history.push('/login');
   };
 
   render() {
