@@ -1,10 +1,17 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+Jon Keeping's solution for the Would You Rather Project.
+The Would You Rather website allows you to ask and answer questions from one of two choices.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+To run the site, perform the following steps:
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+* Install all project dependencies with `npm install`
+* Start the development server with `npm start`
+* Access the site locally on [http://localhost:3000](http://localhost:3000)
+
+
+![Screenshot of Would You Rather Website](https://raw.githubusercontent.com/JonUK/jk-would-you-rather/master/designs/website-screenshot.png)
+
 
 ## Data
 
