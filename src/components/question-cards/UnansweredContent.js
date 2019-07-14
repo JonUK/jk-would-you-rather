@@ -9,7 +9,7 @@ import Spinner from '../Spinner';
  * Both answers are displayed with radio inputs ready for the question to be answered
  * @constructor
  */
-class EditableContent extends Component {
+class UnansweredContent extends Component {
 
   state = {
     selectedAnswer: 'optionOne', // Select the first option by default
@@ -27,8 +27,6 @@ class EditableContent extends Component {
     await this.props.dispatch(handleAnswerQuestion(
       this.props.question.id,
       this.state.selectedAnswer));
-
-    this.props.history.push('/');
   };
 
   render() {
@@ -88,8 +86,8 @@ class EditableContent extends Component {
   }
 }
 
-EditableContent.propTypes = {
+UnansweredContent.propTypes = {
   question: PropTypes.object.isRequired
 };
 
-export default withRouter(connect()(EditableContent));
+export default withRouter(connect()(UnansweredContent));

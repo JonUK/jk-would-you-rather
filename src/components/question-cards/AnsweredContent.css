@@ -1,0 +1,12 @@
+.answered-content__progress-container {
+  display: flex;
+  margin: 1em 0;
+}
+
+.answered-content__progress {
+  flex-grow: 1; /* Allow the progress bar area to take the remaining width */
+}
+
+.answered-content__footer {
+  margin-top: 1.5em;
+}

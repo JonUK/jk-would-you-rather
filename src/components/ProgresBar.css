@@ -1,0 +1,18 @@
+.progress-bar__background {
+  margin-bottom: 0.25em;
+  border-radius: 14px;
+  padding: 2px;
+  background-color: #d5d5d5;
+}
+
+.progress-bar__foreground {
+  padding: 0.25em;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #90a4ad;
+}
+
+.progress-bar__foreground--active {
+  color: white;
+  background-color: #0b78d0;
+}

@@ -17,7 +17,7 @@ function Leaderboard (props) {
 
             <div className="panel__heading">
               { userStats.user.name } has
-              <span className="leaderboard__highlight"> { userStats.points } </span>
+              <span className="text-large"> { userStats.points } </span>
               points.
             </div>
 
@@ -27,9 +27,9 @@ function Leaderboard (props) {
 
           <div className="leaderboard__summary">
             They have asked
-            <span className="leaderboard__highlight"> { userStats.askedQuestionsCount } </span>
+            <span className="text-large"> { userStats.askedQuestionsCount } </span>
             questions and answered
-            <span className="leaderboard__highlight"> { userStats.answeredQuestionCount } </span>
+            <span className="text-large"> { userStats.answeredQuestionCount } </span>
             questions.
           </div>
 

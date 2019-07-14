@@ -26,6 +26,7 @@
 }
 
 .login__label {
-  display: inline-block;
   margin-bottom: 0.75em;
+  font-weight: normal;
+
 }

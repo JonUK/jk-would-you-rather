@@ -2,32 +2,39 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import QuestionCardCommon from '../components/question-cards/QuestionCardCommon';
-import SummaryContent from '../components/question-cards/SummaryContent';
-import EditableContent from '../components/question-cards/EditableContent';
+import UnansweredContent from '../components/question-cards/UnansweredContent';
+import AnsweredContent from '../components/question-cards/AnsweredContent';
 
 function Question(props) {
 
-  const { question, user } = props;
+  const { question, user, isAnswered } = props;
 
   return (
     <div>
       <h1>Question</h1>
       <QuestionCardCommon question={question} user={user}>
-        <EditableContent question={question} />
+
+        {isAnswered ? (
+          <AnsweredContent question={question} />
+        ) : (
+          <UnansweredContent question={question} />
+        )}
+
       </QuestionCardCommon>
     </div>
   );
 }
 
-function mapStateToProps({ questions, users }, { match }) {
+function mapStateToProps({ authenticatedUser, questions, users }, { match }) {
   const questionId = match.params.questionId;
   const question = questions[questionId];
   const user = users[question.author];
+  const isAnswered = question.optionOne.votes.includes(authenticatedUser) || question.optionTwo.votes.includes(authenticatedUser);
 
   return {
     question,
     user,
-    questionAnswered: false
+    isAnswered
   };
 }
 
