@@ -26,7 +26,7 @@ export function answerQuestion(answerObject) {
   return {
     type: ANSWER_QUESTION,
     answerObject
-  }
+  };
 }
 
 /**
@@ -48,18 +48,18 @@ export function handleAnswerQuestion(questionId, answer) {
 
     dispatch(answerQuestion(answerObject));
     return _saveQuestionAnswer(answerObject);
-  }
+  };
 }
 
 /**
- * @param {Object} questionObject
+ * @param {Object} responseObject
  * @return {{answerObject: *, type: string}}
  */
 export function addQuestion(responseObject) {
   return {
     type: ADD_QUESTION,
     responseObject
-  }
+  };
 }
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
@@ -77,5 +77,5 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       .then(responseObject => {
         dispatch(addQuestion(responseObject));
       });
-  }
+  };
 }

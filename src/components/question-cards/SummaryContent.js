@@ -27,8 +27,7 @@ function SummaryContent(props) {
         <Link to={'/questions/' + props.question.id}>View Poll</Link>
       </footer>
     </div>
-  )
-
+  );
 }
 
 SummaryContent.propTypes = {

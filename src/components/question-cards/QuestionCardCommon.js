@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import './QuestionCard.css';
 
-import AvatarImage from "./../AvatarImage";
+import AvatarImage from './../AvatarImage';
 
 /**
  * This contains the common question card markup and uses containment / children
